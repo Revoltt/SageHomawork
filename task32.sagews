@@ -66,7 +66,7 @@ def BFS(lab, g):
                 jfin = j
     icur = ifin
     jcur = jfin
-    print len(frames)
+    #print len(frames)
     #print work
     if work.has_key((ifin, jfin)):
         curstep = work[(ifin, jfin)]
@@ -90,11 +90,12 @@ def BFS(lab, g):
         g.axes(False)
         g += polygon([[jst,-ist], [jst+1,-ist], [jst+1, -ist-1],[jst, -ist-1]], rgbcolor = (0,0,1))
         frames.append(g)
-    print len(frames)
+    #print len(frames)
     return animate(frames)
 
 @interact
-def interaction (n = input_box(default=5, label="n", type=int), m = input_box(default=5, label="m", type=int)):
+def interaction (seed = input_box(default=50, label="seed", type=int), n = input_box(default=5, label="n", type=int), m = input_box(default=5, label="m", type=int)):
+    random.seed(int(seed))
     lab = randomGen(n, m)
     g = draw(lab)
     animation = BFS(lab, g)

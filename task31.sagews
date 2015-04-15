@@ -64,6 +64,7 @@ def graphGen(n, edgeCount):
 
 @interact
 def interaction(seed = input_box(default=50, label="seed", type=int), n = slider([1..30], default=9), edge_density = slider(0,1, 0.05, default=0.2)):
+    random.seed(int(seed))
     graph = graphGen(n, (n*(n-1)/2 * edge_density).round())
     temp = bfs(graph)
     temp.show(delay=80)
