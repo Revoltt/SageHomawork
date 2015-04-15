@@ -34,6 +34,6 @@ lab = generateFromText(
 ...##...#
 ##....###
 """)
-lab
+print lab
 g = draw(lab)
 g.show()
