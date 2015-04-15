@@ -21,7 +21,7 @@ def draw(lab):
                 g += polygon([[j,-i], [j+1,-i], [j+1, -i-1],[j, -i-1]], rgbcolor = (0,0,0))
             else:
                 g += polygon([[j,-i], [j+1,-i], [j+1, -i-1],[j, -i-1]], rgbcolor = (0,1,1))
-    #g.axes(False)
+    g.axes(False)
     return g
 
 def BFS(lab, g):
@@ -53,6 +53,7 @@ def BFS(lab, g):
                 q.append((icur, jcur + 1))
             if jcur - 1 >= 0 and lab[icur][jcur - 1] == 0:
                 q.append((icur, jcur - 1))
+            g.axes(False)
             frames.append(g)
     return animate(frames)
 lab = generateFromText(
@@ -66,4 +67,4 @@ lab = generateFromText(
 lab
 g = draw(lab)
 animation = BFS(lab, g)
-animation.show(delay=100)
+animation.show(delay=40)
